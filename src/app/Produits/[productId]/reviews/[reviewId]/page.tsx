@@ -1,21 +1,33 @@
-import React from 'react'
+import React from 'react'; 
+import {notFound} from 'next/navigation';
+
+interface ProductReviewParams {
+    productId: string;
+    reviewId: string;
+}
 
 export default async function ProductReview({
     params,
 }: {
-    params: Promise<{ productId: string, reviewId: string }>;
-}
-) {
-    const { productId, reviewId } = await params;
+    params: ProductReviewParams;
+}) {
+    const { productId, reviewId } = params;
+
+    if (parseInt(reviewId) > 1000) {
+        notFound(); // c'est la page notFound qui se trouve dans [reviewId]\notFound.tsx
+    }
+
     return (
         <>
-            <h1>Review {reviewId} for Product {productId} </h1>
+            <h1>Review {reviewId} for Product {productId}</h1>
             <div>
                 The nested dynamic route inside a nested dynamic route is used
                 to display a specific review for a specific product.
                 Maintenant tu peut chercher:
-                <a href={`http://localhost:3000/Produits/${productId}/reviews/${reviewId}`}>http://localhost:3000/Produits/{productId}/reviews/{reviewId} par exemple.</a>
+                <a href={`http://localhost:3000/Produits/${productId}/reviews/${reviewId}`}>
+                    http://localhost:3000/Produits/{productId}/reviews/{reviewId}
+                </a>
             </div>
         </>
-    )
+    );
 }
