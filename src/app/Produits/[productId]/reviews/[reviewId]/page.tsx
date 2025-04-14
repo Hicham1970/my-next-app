@@ -1,5 +1,5 @@
 import React from 'react'; 
-import {notFound} from 'next/navigation';
+import {notFound, redirect} from 'next/navigation';
 
 interface ProductReviewParams {
     productId: string;
@@ -14,7 +14,8 @@ export default async function ProductReview({
     const { productId, reviewId } = params;
 
     if (parseInt(reviewId) > 1000) {
-        notFound(); // c'est la page notFound qui se trouve dans [reviewId]\notFound.tsx
+        // notFound(); // c'est la page notFound qui se trouve dans [reviewId]\notFound.tsx
+        redirect('/Produits');
     }
 
     return (
