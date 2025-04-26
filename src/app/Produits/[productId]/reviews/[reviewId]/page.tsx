@@ -1,21 +1,35 @@
-import React from 'react'; 
-import {notFound, redirect} from 'next/navigation';
+import React from 'react';
+import { notFound, redirect } from 'next/navigation';
 
 interface ProductReviewParams {
     productId: string;
     reviewId: string;
 }
 
+
+// fonction de generation de nombres:
+function getRandomInt(count: number) {
+    return Math.floor(Math.random() * count);
+}
+
+
+
 export default async function ProductReview({
     params,
 }: {
-    params: ProductReviewParams;
+    params: Promise<{ productId: string; reviewId: string }>;
 }) {
-    const { productId, reviewId } = params;
+    // appele de la fonction getRandomInt()
+    const randomInt = getRandomInt(2);
+    console.log(randomInt);
+    if (randomInt === 1) {
+        throw new Error('Something went wrong in loading in [reviewId]/page.tsx!');
+    }
+    const { productId, reviewId } = await params;
 
     if (parseInt(reviewId) > 1000) {
-        // notFound(); // c'est la page notFound qui se trouve dans [reviewId]\notFound.tsx
-        redirect('/Produits');
+        notFound(); // c'est la page notFound qui se trouve dans [reviewId]\notFound.tsx
+        // redirect('/Produits');
     }
 
     return (

@@ -1,9 +1,20 @@
-import React from 'react'
+import React from 'react'; 
+import {Metadata} from 'next'; 
 
-function BlogPage() {
+export const metadata: Metadata = {
+  title: 'Blog',
+  description: 'Blog description',
+};
+
+
+
+export default async function BlogPage() {
+  await new Promise ((resolve)=>{
+    setTimeout(()=>{
+      resolve('Un retard attentionnel!!!')
+    },2000)
+  })
   return (
-    <div>Blog Page kim</div>
+    <div className="flex justify-center items-center h-screen  text-2xl ">Loading</div>
   )
 }
-
-export default BlogPage

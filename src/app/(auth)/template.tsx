@@ -1,6 +1,7 @@
 "use client"
 
 import type { Metadata } from "next";
+import {useState} from "react";
 import { Geist, Geist_Mono } from "next/font/google";
 import "../globals.css";
 import Link from "next/link";
@@ -34,6 +35,9 @@ export default function AuthLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // la variale d'etat:
+  const [Input, setInput] = useState(""); 
+
   // get the current path
   const pathname = usePathname();
   return (
@@ -41,6 +45,9 @@ export default function AuthLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <div>
+          <input type="text" value={Input} onChange={(e)=>setInput(e.target.value)} />
+        </div>
         <div>
           {navLinks.map((link)=>{
           const isActive = pathname === link.href || 
