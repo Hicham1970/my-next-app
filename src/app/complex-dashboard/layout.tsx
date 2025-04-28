@@ -1,4 +1,3 @@
-
 export default function ComplexDashboardLayout({
     children,
     revenue, 
@@ -13,14 +12,14 @@ export default function ComplexDashboardLayout({
     return (
         <div>
             <div>{children}</div> {/**Content from page.tsx */}
-            <div style={{ display: "flex" }}>
-                <div style={{display:"flex", flexDirection:"column",}}>
-                    <div>{users} {/**Component from user analytics */}</div>
-                    <div>{revenue} {/**Component from Revenue metrics */}</div>
+            <div className="flex gap-4 min-h-screen"> 
+                <div className="w-1/2"> 
+                    <div>{users}</div>
+                    <div>{revenue}</div>
                 </div>
-                <div className="flex-1 flex">{notifications} {/**Composant from Notifications */}</div>
-                
-                
+            <div className="w-1/2 h-screen flex align-center justify-center align-items-center   gap-4"> 
+                    {notifications}
+                </div>
             </div>
         </div>
     ) 

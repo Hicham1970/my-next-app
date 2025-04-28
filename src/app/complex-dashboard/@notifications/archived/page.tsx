@@ -2,17 +2,17 @@ import React from 'react';
 import { Card } from '@/components/card';
 import Link from 'next/link';
  
-function Notifications() {
+function ArchivedNotifications() {
     return (
         <Card >
-            <div>Notifications</div>
+            <div>Archived Notifications</div>
 
             <div>
-                <Link href="/complex-dashboard/archived">Archived</Link>
+                <Link href="/complex-dashboard">Default</Link>
             </div>
 
         </Card>
     )
 }
 
-export default Notifications
+export default ArchivedNotifications
